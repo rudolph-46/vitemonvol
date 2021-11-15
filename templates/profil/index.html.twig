@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProfilController!{% endblock %}
+{% block stylesheets %}
+<link href="{{asset('css/profile.css')}}" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+{% endblock %}
+{% block body %}
+
+<div class="container bootstrap snippets bootdey mt-5">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="panel rounded shadow">
+                <div class="panel-body">
+                    <div class="inner-all">
+                        <ul class="list-unstyled">
+                            <li class="text-center">
+                                <img class="img-fluid img-responsive img-bordered-primary" src="{{ asset('images/products/') }}{{ app.user.imageName }}">
+                            </li>
+                            <li class="text-center">
+                                <h4 class="text-capitalize">{{app.user.nom}}</h4>
+                                <p class="text-muted text-capitalize">{{app.user.email}}</p>
+                            </li>
+                       
+                            <li>
+                                <div class="p-2">
+                                    <a href="{{path('profil_edit',{'id':app.user.id})}}" class="btn btn-primary w-100 my-1"><i class="fa fa-cog pull-right"></i>Modifier compte</a><br>
+                                    <a href="{{path('app_logout')}}" class="btn btn-secondary w-100 my-1"><i class="fa fa-sign-out pull-right"></i>Se déconnecter</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="panel cover rounded shadow no-overflow">
+                <div class="panel-body">
+                    <div class="inner-cover">
+                        <img src="{{ asset('images/vue.jpg') }}" class="img-fluid w-100" alt="cover" style="height:200px ">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-3">
+              	<h3>Mes résevations</h3>
+                
+            </div>	
+              <div class="row">
+                    <div class="col-xl-12">
+                       {% for reservation in app.user.reservations %}
+                        <div class="tab-content p-0">
+                            <div class="tab-pane fade active show" id="profile-followers">
+                                <div class="list-group">
+                                    <div class="list-group-item d-flex align-items-center">
+                                        <img src="{{ asset('images/products/') }}{{ reservation.circuit.imageName }}" alt="" width="50px" class="rounded-sm ml-n2" />
+                                        <div class="flex-fill pl-3 pr-3">
+                                            <h5 class="m-3">{{ reservation.circuit.libelle }}</h5>
+                                            <span class="ml-3">Nombre de place réservé : {{ reservation.nbrDePlace }}</span>
+                                        </div>
+                                       
+
+                                          {{ include('reservation/_delete_form.html.twig') }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                       {% endfor %}
+                    </div>
+                </div>
+        </div>
+       
+            </div>
+</div>
+{% endblock %}

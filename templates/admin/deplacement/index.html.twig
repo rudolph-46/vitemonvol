@@ -1,0 +1,35 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Pays index{% endblock %}
+
+{% block body %}
+    <h1 class="m-3">Liste de pays</h1>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for pay in pays %}
+            <tr>
+                <td>{{ pay.id }}</td>
+                <td>{{ pay.nom }}</td>
+                <td>
+                    <a href="{{ path('admin_deplacement_show', {'id': pay.id}) }}" class="btn btn-primary">Voir</a>
+                    <a href="{{ path('admin_deplacement_edit', {'id': pay.id}) }}" class="btn btn-success">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_deplacement_new') }}" class="btn btn-primary w-100 text-center" >Nouveau pays</a>
+{% endblock %}

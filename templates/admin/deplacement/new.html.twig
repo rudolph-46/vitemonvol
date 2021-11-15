@@ -1,0 +1,11 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}New Pays{% endblock %}
+
+{% block body %}
+    <h1>Nouveau pays</h1>
+
+    {{ include('admin/deplacement/_form.html.twig') }}
+
+    <a href="{{ path('admin_deplacement_index') }}" class="btn btn-primary">Retour a la liste</a>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Reservation{% endblock %}
+
+{% block body %}
+
+    <div class="card m-5 p-3">
+ 	  <div class="card-header"> Nouvelle reservation </div>
+ <div class="card-body">
+   	  <blockquote class="blockquote mb-0"><div class="tab-content p-0">
+             <div class="tab-pane fade active show px-2" >
+                    <div class="list-group">
+                            <div class="list-group-item d-flex align-items-center">
+                                  <img src="{{ asset('images/products/') }}{{ circuit.imageName }}" alt="" width="50px" class="rounded-sm ml-n2" />
+                                        <div class="flex-fill pl-3 pr-3">
+                                            <div><h4>{{circuit.libelle}}</h4></div>
+                                         
+                                         </div>
+                                  </div>
+                            </div>
+                     </div>
+             </div>
+      {{ include('reservation/_form.html.twig') }}
+    </blockquote>
+  </div>
+</div>
+{% endblock %}

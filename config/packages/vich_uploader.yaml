@@ -1,0 +1,7 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        circuit:
+            uri_prefix: /images/circuit
+            upload_destination: '%kernel.project_dir%/public/images/products'

@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AcceuilController!{% endblock %}
+
+{% block body %}
+<main>
+
+  <section class="py-5 " style="background-image:url({{asset('images/img-fond.jpg')}}) ;background-size: cover;" >
+    <div class="row py-lg-5">
+      <div class="col-lg-6 text-center col-md-8 mx-auto" >
+        <h1 class="text-light" >ViteMonVol</h1>
+        <p class="text-light ">Site de reservation de vol ,presentant des destinations incroyables et innoubliables!</p>
+       
+      </div>
+    </div>
+  </section>
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <h2 class="py-2">Circuits Disponibles</h2>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        {% for circuit in circuits %}
+        <div class="col">
+          <div class="card shadow-sm">
+           <img src="{{ asset('images/products/') }}{{ circuit.imageName }}" style="height: 200px;">
+
+                <div class="card-body">
+                  <h5 class="card-title">{{circuit.libelle}}</h5>
+                   <p class="card-text">{{circuit.description}}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a href="{{ path('circuit_show', {'id': circuit.id}) }}" class="btn btn-primary px-2 "> Voir +</a>
+                </div>
+                <small class="text-muted">Nombre de places disponibles: {{circuit.placeDisponible}}/{{circuit.nbrDePlace}} </small>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+    </div>
+  </div>
+
+</main>
+{% endblock %}

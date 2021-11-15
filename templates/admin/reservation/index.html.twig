@@ -1,0 +1,34 @@
+
+{% extends 'admin/base.html.twig' %}
+{% block body %}
+
+<div class="m-2">
+    <h2 class="mb-2">Listes des réservations</h2>
+    <table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Photo</th>
+      <th scope="col">Libelle</th>
+      <th scope="col">Place reservée</th>
+      <th scope="col">Place disponible</th>
+      <th scope="col">Client</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+  {% for reservation in reservations %}
+    <tr>
+      <th scope="row">{{reservation.id}}</th>
+      <td> <img src="{{ asset('images/products/') }}{{ reservation.circuit.imageName }}" alt="user" class=""width=50 heigth=80></td>
+      <td>{{reservation.circuit.libelle}}</td>
+      <td>{{reservation.nbrDePlace}}</td>
+      <td>{{reservation.circuit.placeDisponible}}</td>
+      <td>{{reservation.user.nom}}</td>
+    </tr>
+   {% endfor %}
+  </tbody>
+</table>
+
+</div>
+{% endblock %}

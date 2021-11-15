@@ -1,0 +1,15 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Modifier Circuit{% endblock %}
+
+{% block body %}
+    <h1>Modifier Circuit</h1>
+
+    {{ include('/admin/circuit/_form.html.twig', {'button_label': 'Update'}) }}
+<div class="d-flex">
+	<a href="{{ path('admin_circuit_index') }}" class="btn btn-primary">Retour a la liste</a>
+
+    {{ include('admin/circuit/_delete_form.html.twig') }}
+</div>
+    
+{% endblock %}

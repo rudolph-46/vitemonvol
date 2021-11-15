@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Circuit{% endblock %}
+{% set current_path = 'circuit/' ~ app.request.get('id') %}
+{% block body %}
+<div class="container">
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-4 ">
+                    <div class="img-container ">
+                        <img src="{{ asset('images/products/') }}{{ circuit.imageName }}" alt="circuit" class="" style="width=150px  ">
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-8">
+                    <div>
+                        <h2>{{circuit.libelle}}({{circuit.ville[0].country.nom}})</h2>
+                        {% if app.user %}
+                             <a href="{{path('reservation_new', {'circuitId': circuit.id })}}" class="btn btn-primary">Reserver maintenant</a>
+                        {% else %}
+                             <a href="{{ path('app_login', {'prev_URI': current_path }) }}" class="btn btn-primary">Reserver maintenant</a>
+                         {% endif %}
+                    </div>
+                    <div>
+                        <p>
+                            {{circuit.description}}
+                        </p>
+                        <small class="text-muted">Place disponible: {{circuit.placeDisponible}} </small><br>
+                        <span>Villes : <span/>
+                        <ul class="styled_list">
+                        {% for ville in circuit.ville%}
+                         <li class=""><i class="fa fa-chevron-circle-right" aria-hidden="true"></i>{{ville.nom}}</li>
+
+                        {% endfor %}
+                           
+                        </ul>
+                    </div>
+              
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

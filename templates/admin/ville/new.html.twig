@@ -1,0 +1,11 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Nouvelle ville{% endblock %}
+
+{% block body %}
+    <h1>Nouvelle ville</h1>
+
+    {{ include('admin/ville/_form.html.twig') }}
+
+    <a href="{{ path('admin_ville_index') }}" class="btn btn-primary">Retour a la liste</a>
+{% endblock %}

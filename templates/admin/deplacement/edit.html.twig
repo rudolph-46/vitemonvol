@@ -1,0 +1,13 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Modifier pays{% endblock %}
+
+{% block body %}
+    <h1>Modifier Pays</h1>
+
+    {{ include('admin/deplacement/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+    <a href="{{ path('admin_deplacement_index') }}" class="btn btn-primary">Retour a la liste</a>
+
+    {{ include('admin/deplacement/_delete_form.html.twig') }}
+{% endblock %}

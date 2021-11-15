@@ -1,0 +1,47 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Circuit{% endblock %}
+{% block body %}
+<div class="container">
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-4 ">
+                    <div class="img-container ">
+                        <img src="{{ asset('images/products/') }}{{ circuit.imageName }}" alt="circuit" class="" style="width=150px  ">
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-8">
+                    <div>
+                        <h2>{{circuit.libelle}}({{circuit.ville[0].country.nom}})</h2>
+                       
+                    </div>
+                    <div>
+                        <p>
+                            {{circuit.description}}
+                        </p>
+                        <small class="text-muted">Place disponible: {{circuit.placeDisponible}} </small><br>
+                        <span>Villes : <span/>
+                        <ul class="styled_list">
+                             {% for ville in circuit.ville%}
+                            <li class=""><i class="fa fa-chevron-circle-right" aria-hidden="true"></i>{{ville.nom}}</li>
+                            {% endfor %}
+                        </ul>   
+                        
+                          <div class="d-flex">
+                             <a href="{{ path('admin_circuit_index') }}" class="btn btn-primary pr-2">Retour a la liste</a>
+
+                                <a href="{{ path('admin_circuit_edit', {'id': circuit.id}) }}" class="btn btn-success mr-1">Modifier</a>
+
+                             {{ include('admin/circuit/_delete_form.html.twig') }}
+                    </div>
+
+                    </div>
+              
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

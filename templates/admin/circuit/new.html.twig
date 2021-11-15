@@ -1,0 +1,11 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Circuits{% endblock %}
+
+{% block body %}
+    <h1>Nouveau circuit</h1>
+
+    {{ include('admin/circuit/_form.html.twig') }}
+
+    <a href="{{ path('admin_circuit_index') }}" class="btn btn-primary">Retour a la liste</a>
+{% endblock %}

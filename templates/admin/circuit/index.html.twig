@@ -1,0 +1,43 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Circuit {% endblock %}
+
+{% block body %}
+    <h1>Circuit </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Libelle</th>
+                <th>Nombre De Place</th>
+                <th>Place disponible</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for circuit in circuits %}
+            <tr>
+                <td>{{ circuit.id }}</td>
+                <td>{{ circuit.libelle }}</td>
+                <td>{{ circuit.nbrDePlace }}</td>
+                <td>{{ circuit.PlaceDisponible}}</td>
+                <td>{{ circuit.description }}</td>
+                <td> <img src="{{ asset('images/products/') }}{{ circuit.imageName }}" alt="user" class=""width=50 heigth=80></td>
+                <td>
+                    <a href="{{ path('admin_circuit_show', {'id': circuit.id}) }}" class="btn btn-primary">Voir</a>
+                    <a href="{{ path('admin_circuit_edit', {'id': circuit.id}) }}" class="btn btn-success">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_circuit_new')}}" class="btn btn-primary w-100 text-center">Nouveau circuit</a>
+{% endblock %}
